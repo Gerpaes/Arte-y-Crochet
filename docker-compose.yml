@@ -1,41 +1,59 @@
 services:
-  db:
-    image: mysql:8.0
-    container_name: mysql_wp
+  mysql:
+    image: mysql:5.7
+    container_name: prestashop-mysql
     restart: always
     environment:
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wpuser
-      MYSQL_PASSWORD: ${WP_DB_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${WP_DB_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: prestashop
+      MYSQL_USER: prestashop
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
-      - db_data:/var/lib/mysql
+      - mysql_data:/var/lib/mysql
     networks:
       - proxy
-  wordpress:
-    image: wordpress:latest
-    container_name: wordpress
+  prestashop:
+    image: prestashop/prestashop:latest
+    container_name: prestashop
     restart: always
     depends_on:
-      - db
-    ports:
-      - "8082:80"
+      - mysql
     environment:
-      WORDPRESS_DB_HOST: db:3306
-      WORDPRESS_DB_NAME: wordpress
-      WORDPRESS_DB_USER: wpuser
-      WORDPRESS_DB_PASSWORD: ${WP_DB_PASSWORD}
+      PRESTASHOP_DATABASE_HOST: mysql
+      PRESTASHOP_DATABASE_NAME: prestashop
+      PRESTASHOP_DATABASE_USER: prestashop
+      PRESTASHOP_DATABASE_PASSWORD: ${MYSQL_PASSWORD}
+      PS_DEV_MODE: 1
+      PS_INSTALL_AUTO: 0
+      PS_SSL_ENABLED: 0
+      PS_SSL_ENABLED_EVERYWHERE: 0
+    ports:
+      - "8085:80"
     volumes:
-      - wp_data:/var/www/html
+      - html_data:/var/www/html
+    networks:
+      - proxy
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    depends_on:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: prestashop
+      PMA_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "8081:80"
     networks:
       - proxy
 volumes:
-  db_data:
+  mysql_data:
     external: true
-    name: wordpress_db_data
-  wp_data:
+    name: prestashop_mysql_data
+  html_data:
     external: true
-    name: wordpress_wp_data
+    name: prestashop_html_data
 networks:
   proxy:
     external: true
