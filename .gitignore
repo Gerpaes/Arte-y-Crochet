@@ -1,2 +1,8 @@
 .env
 *.sql
+.ps-core/
+backups/
+.vscode/
+*.bak
+*.zip
+themes/*/assets/cache/

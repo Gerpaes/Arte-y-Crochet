@@ -31,6 +31,8 @@ services:
       - "8085:80"
     volumes:
       - html_data:/var/www/html
+      - ./themes/child_hummingbird:/var/www/html/themes/child_hummingbird
+      - ./modules/monitoringimage:/var/www/html/modules/monitoringimage
     networks:
       - proxy
   phpmyadmin:
@@ -40,9 +42,7 @@ services:
     depends_on:
       - mysql
     environment:
-      PMA_HOST: mysql
-      PMA_USER: prestashop
-      PMA_PASSWORD: ${MYSQL_PASSWORD}
+      PMA_HOSTS: prestashop-mysql,mysql_wp
     ports:
       - "8081:80"
     networks:

@@ -1,0 +1,68 @@
+/* ============================================
+   ARTE Y CROCHET - Solo colores (tema hijo de Hummingbird)
+   ============================================ */
+
+:root {
+  --ac-rosa: #e8a0b4;
+  --ac-rosa-oscuro: #d4839a;
+  --ac-mostaza: #c9a05c;
+  --ac-crema: #fdf6ee;
+  --ac-texto: #4a3b3f;
+
+  /* Variables de Bootstrap 5 que usa Hummingbird */
+  --bs-primary: #e8a0b4;
+  --bs-primary-rgb: 232, 160, 180;
+  --bs-link-color: #d4839a;
+  --bs-link-color-rgb: 212, 131, 154;
+  --bs-link-hover-color: #e8a0b4;
+  --bs-link-hover-color-rgb: 232, 160, 180;
+}
+
+/* --- Header / cabecera --- */
+#header {
+  background-color: var(--ac-crema);
+}
+
+/* Franja superior (equivale al .header-nav de Classic) */
+#header .header-top {
+  background-color: var(--ac-rosa);
+  color: var(--ac-texto);
+}
+
+#header .header-top a {
+  color: var(--ac-texto);
+}
+
+/* --- Botones principales (anadir al carrito, comprar, etc.) --- */
+.btn-primary {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--ac-rosa);
+  --bs-btn-border-color: var(--ac-rosa);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--ac-rosa-oscuro);
+  --bs-btn-hover-border-color: var(--ac-rosa-oscuro);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--ac-rosa-oscuro);
+  --bs-btn-active-border-color: var(--ac-rosa-oscuro);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: var(--ac-rosa);
+  --bs-btn-disabled-border-color: var(--ac-rosa);
+  --bs-btn-focus-shadow-rgb: 232, 160, 180;
+}
+
+/* --- Precios --- */
+.product__price,
+.product__current-price,
+.product-miniature__price {
+  color: var(--ac-rosa-oscuro);
+}
+
+/* --- Footer --- */
+.footer__main {
+  background-color: var(--ac-texto);
+  color: var(--ac-crema);
+}
+
+.footer__main a {
+  color: var(--ac-mostaza);
+}
