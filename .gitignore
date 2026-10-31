@@ -6,3 +6,4 @@ backups/
 *.bak
 *.zip
 themes/*/assets/cache/
+.claude/settings.local.json
