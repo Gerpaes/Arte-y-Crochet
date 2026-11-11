@@ -8,3 +8,4 @@ backups/
 themes/*/assets/cache/
 .claude/settings.local.json
 backup-*
+themes/child_hummingbird/modules/*/mails/

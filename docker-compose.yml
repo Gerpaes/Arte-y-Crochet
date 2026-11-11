@@ -13,7 +13,7 @@ services:
     networks:
       - proxy
   prestashop:
-    image: prestashop/prestashop:9.1.5
+    image: prestashop/prestashop:9.2.1
     container_name: prestashop
     restart: always
     depends_on:
